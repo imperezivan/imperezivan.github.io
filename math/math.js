@@ -1,43 +1,37 @@
 let expectedResult;
 let initTime;
+
 function init() {
-    
+    initListeners();
+    loadStatics();
+    showChallenge();
+}
+
+function initListeners() {
     document.getElementById('btnNext').addEventListener('click', function (e) {
         document.getElementById('inUserResult').value = '';
         document.getElementById('txtRealResult').innerText = '';
-        
         showChallenge()
     });
     document.getElementById('btnReset').addEventListener('click', function (e) {
         reset();
     });
-
     document.getElementById('inUserResult').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             validateResult();
         }
     });
-
-    loadStatics();
-
-    showChallenge();
-
 }
 
-function reset(){
-    localStorage.removeItem('ls_rs');
-    location.reload(false);
-}
-
-function loadStatics(){
-    let rs =  loadResult();
-    if(rs.ok){
+function loadStatics() {
+    let rs = loadResult();
+    if (rs.ok) {
         document.getElementById('txtMin').innerText = rs.min;
         document.getElementById('txtMax').innerText = rs.max;
         document.getElementById('txtAvg').innerText = rs.avg.toFixed(0);
         document.getElementById('txtGames').innerText = rs.games;
-        document.getElementById('txtPerc').innerText =  ((rs.ok*100)/rs.games).toFixed(0);
-    }
+        document.getElementById('txtPerc').innerText = ((rs.ok * 100) / rs.games).toFixed(0);
+    } 
 }
 
 function showChallenge() {
@@ -47,6 +41,16 @@ function showChallenge() {
     expectedResult = (a * b).toString();
     document.getElementById('txtOperation').innerText = `${a} x ${b}`;
     initTime = new Date().getTime();
+}
+
+function reset() {
+    document.getElementById('txtMin').innerText = '';
+    document.getElementById('txtMax').innerText = '';
+    document.getElementById('txtAvg').innerText = '';
+    document.getElementById('txtGames').innerText = '';
+    document.getElementById('txtPerc').innerText = '';
+    localStorage.removeItem('ls_rs');
+    showChallenge();
 }
 
 function validateResult() {
@@ -88,4 +92,4 @@ function getRandom() {
     return parseInt((Math.random() * 19).toFixed(0)) + 1;
 }
 
-window.addEventListener('load', init)
+window.addEventListener('load', init);
