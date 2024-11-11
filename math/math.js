@@ -50,6 +50,8 @@ function reset() {
     document.getElementById('txtGames').innerText = '';
     document.getElementById('txtPerc').innerText = '';
     localStorage.removeItem('ls_rs');
+    document.getElementById('inUserResult').value = '';
+    document.getElementById('txtRealResult').innerText = '';
     showChallenge();
 }
 
