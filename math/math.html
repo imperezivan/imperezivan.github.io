@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='math.js'></script>
+    <style>
+        .main {}
+
+        .content {
+            width: fit-content;
+            margin: auto;
+        }
+
+        .divButtons {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        table {
+            border-spacing: 0px;
+        }
+
+        td {
+            border: 1px solid gray;
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 5px;
+        }
+
+        #inUserResult{
+            padding: 6px;
+        }
+
+        .separator{
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="content">
+            <div>
+                <table>
+                    <tr>
+                        <td>Min</td>
+                        <td>Max</td>
+                        <td>Avg</td>
+                        <td>Games</td>
+                        <td>Perc</td>
+                    </tr>
+                    <tr>
+                        <td id="txtMin"></td>
+                        <td id="txtMax"></td>
+                        <td id="txtAvg"></td>
+                        <td id="txtGames"></td>
+                        <td id="txtPerc"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="separator"></div>
+            <div id="txtOperation">
+                 
+            </div>
+            <div class="separator"></div>
+            <div id="txtRealResult">
+
+            </div>
+            <div class="separator"></div>
+            <div>
+                <input type="number" id="inUserResult" />
+            </div>
+            <div class="divButtons">
+                <button type="button" id="btnNext">Next</button>
+                <button type="button" id="btnReset">Reset</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
