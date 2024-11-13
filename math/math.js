@@ -9,9 +9,7 @@ function init() {
 
 function initListeners() {
     document.getElementById('btnNext').addEventListener('click', function (e) {
-        document.getElementById('inUserResult').value = '';
-        document.getElementById('txtRealResult').innerText = '';
-        showChallenge()
+       loadNext();
     });
     document.getElementById('btnReset').addEventListener('click', function (e) {
         reset();
@@ -19,8 +17,16 @@ function initListeners() {
     document.getElementById('inUserResult').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             validateResult();
+        } else if (e.key == '.'){
+           setTimeout(()=> loadNext(), 0);
         }
     });
+}
+
+function loadNext() {
+     document.getElementById('inUserResult').value = '';
+     document.getElementById('txtRealResult').innerText = '';
+     showChallenge()
 }
 
 function loadStatics() {
@@ -56,7 +62,7 @@ function reset() {
 }
 
 function validateResult() {
-    let userResult = document.getElementById('inUserResult').value;
+    let userResult = document.getElementById('inUserResult').value.replace('.', '');
     let msg = ''
     if (userResult == expectedResult) {
         let time = new Date().getTime() - initTime;
