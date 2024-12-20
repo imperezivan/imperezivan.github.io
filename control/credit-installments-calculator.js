@@ -132,3 +132,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
             generateInstallmentTable();
         });
 });
+
+// Add this JavaScript code to toggle the visibility of divs with the class 'rule-tooltip'
+document.getElementById('toggleRules').addEventListener('click', () => {
+    const ruleTooltips = document.querySelectorAll('.rule-tooltip');
+    ruleTooltips.forEach(div => {
+        if (div.style.display === 'none') {
+            div.style.display = 'block';
+        } else {
+            div.style.display = 'none';
+        }
+    });
+});
