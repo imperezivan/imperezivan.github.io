@@ -7,10 +7,17 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container d-flex justify-content-center align-items-center"  >
+    <p> Tip for real estate <b>(20,35,20)</b> <b>20%</b> downpayment <b>35%</b> max incomes <b>20</b> max years</p>
+</div>
+<div class="container d-flex justify-content-center align-items-center"  >
+    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tip for auto <b>(30,20,4)&nbsp;&nbsp;</b> <b>30%</b> downpayment <b>20%</b> max incomes <b>4</b> max years</p>
+</div>
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
     <form class="w-50">
         <div class="form-group">
-            <label for="realEstateValue">Real estate value:</label>
+            <label for="realEstateValue">Asset value:</label>
             <input type="number" class="form-control" id="realEstateValue" name="realEstateValue" step="0.01">
         </div>
         <div class="form-group">
@@ -46,7 +53,7 @@
             <input type="text" class="form-control" id="installment" name="installment" readonly>
         </div>
         <div class="form-group">
-            <label for="annualPaymentIncrease">Yearly payment increase (%):</label>
+            <label for="annualPaymentIncrease">Annual payment increase (%):</label>
             <input type="number" class="form-control" id="annualPaymentIncrease" name="annualPaymentIncrease" step="0.01">
         </div>
         <button type="submit" class="btn btn-primary">Calculate</button>
@@ -75,6 +82,6 @@
         </tbody>
     </table>
 </div>
-<script src="credit-installments-calculator.js"></script>
+<script src="calc.js"></script>
 </body>
 </html>
