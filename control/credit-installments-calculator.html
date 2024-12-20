@@ -2,85 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name=viewport content="width=device-width" />
+    <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Credit Installments Calculator</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container d-flex justify-content-center align-items-center"  >
-    <p> Tip for real estate <b>(20,35,20)</b> <b>20%</b> downpayment <b>35%</b> max incomes <b>20</b> max years</p>
-</div>
-<div class="container d-flex justify-content-center align-items-center"  >
-    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tip for auto <b>(30,20,4)&nbsp;&nbsp;</b> <b>30%</b> downpayment <b>20%</b> max incomes <b>4</b> max years</p>
-</div>
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-
-    <form class="w-50">
-        <div class="form-group">
-            <label for="realEstateValue">Asset value:</label>
-            <input type="number" class="form-control" id="realEstateValue" name="realEstateValue" step="0.01">
-        </div>
-        <div class="form-group">
-            <label for="downpayment">Downpayment (%):</label>
-            <input type="number" class="form-control" id="downpayment" name="downpayment" step="0.01" value="20">
-        </div>
-        <div class="form-group">
-            <label for="downpaymentAmount">Downpayment amount:</label>
-            <input type="text" class="form-control" id="downpaymentAmount" name="downpaymentAmount"  readonly>
-        </div>
-        <div class="form-group">
-            <label for="creditAmount">Credit amount:</label>
-            <input type="text" class="form-control" id="creditAmount" name="creditAmount"  readonly>
-        </div>
-        <div class="form-group">
-            <label for="interest">Interest (%):</label>
-            <input type="number" class="form-control" id="interest" name="interest" step="0.01" value="10" >
-        </div>
-        <div class="form-group">
-            <label for="yearlyInterestFactor">Yearly interest factor:</label>
-            <input type="number" class="form-control" id="yearlyInterestFactor" name="yearlyInterestFactor" step="0.0001" readonly>
-        </div>
-        <div class="form-group">
-            <label for="monthlyInterestFactor">Monthly interest factor:</label>
-            <input type="number" class="form-control" id="monthlyInterestFactor" name="monthlyInterestFactor" step="0.0001" readonly>
-        </div>
-        <div class="form-group">
-            <label for="years">Years:</label>
-            <input type="number" class="form-control" id="years" name="years" value="15">
-        </div>
-        <div class="form-group">
-            <label for="installment">Installment:</label>
-            <input type="text" class="form-control" id="installment" name="installment" readonly>
-        </div>
-        <div class="form-group">
-            <label for="annualPaymentIncrease">Annual payment increase (%):</label>
-            <input type="number" class="form-control" id="annualPaymentIncrease" name="annualPaymentIncrease" step="0.01">
-        </div>
-        <button type="submit" class="btn btn-primary">Calculate</button>
-    </form>
-
-</div>
 <div class="container">
-    <p></p>
-</div>
-<div class="container">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Year</th>
-            <th>Month</th>
-            <th>Previous debt</th>
-            <th>Interest</th>
-            <th>Total debt</th>
-            <th>Payment increase</th>
-            <th>Payment</th>
-            <th>Debt after payment</th>
-        </tr>
-        </thead>
-        <tbody id="installmentTableBody">
-        <!-- Rows will be added here by JavaScript -->
-        </tbody>
-    </table>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="rule-tooltip" style="display: none;">
+                <p>Tip for real estate <b>(20,35,20)</b> <b>20%</b> downpayment <b>35%</b> max incomes <b>20</b> max years</p>
+            </div>
+            <div class="rule-tooltip" style="display: none;">
+                <p>Tip for auto <b>(30,20,4)</b> <b>30%</b> downpayment <b>20%</b> max incomes <b>4</b> max years</p>
+            </div>
+            <form>
+                <div class="form-group">
+                    <button id="toggleRules" class="btn btn-secondary">Tips</button>
+                </div>
+                <div class="form-group">
+                    <label for="realEstateValue">Asset value:</label>
+                    <input type="number" class="form-control" id="realEstateValue" name="realEstateValue" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="downpayment">Downpayment (%):</label>
+                    <input type="number" class="form-control" id="downpayment" name="downpayment" step="0.01" value="20">
+                </div>
+                <div class="form-group">
+                    <label for="downpaymentAmount">Downpayment amount:</label>
+                    <input type="text" class="form-control" id="downpaymentAmount" name="downpaymentAmount" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="creditAmount">Credit amount:</label>
+                    <input type="text" class="form-control" id="creditAmount" name="creditAmount" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="interest">Interest (%):</label>
+                    <input type="number" class="form-control" id="interest" name="interest" step="0.01" value="10">
+                </div>
+                <div class="form-group">
+                    <label for="yearlyInterestFactor">Yearly interest factor:</label>
+                    <input type="number" class="form-control" id="yearlyInterestFactor" name="yearlyInterestFactor" step="0.0001" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="monthlyInterestFactor">Monthly interest factor:</label>
+                    <input type="number" class="form-control" id="monthlyInterestFactor" name="monthlyInterestFactor" step="0.0001" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="years">Years:</label>
+                    <input type="number" class="form-control" id="years" name="years" value="15">
+                </div>
+                <div class="form-group">
+                    <label for="installment">Installment:</label>
+                    <input type="text" class="form-control" id="installment" name="installment" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="annualPaymentIncrease">Annual payment increase (%):</label>
+                    <input type="number" class="form-control" id="annualPaymentIncrease" name="annualPaymentIncrease" step="0.01">
+                </div>
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>Previous debt</th>
+                    <th>Interest</th>
+                    <th>Total debt</th>
+                    <th>Payment increase</th>
+                    <th>Payment</th>
+                    <th>Debt after payment</th>
+                </tr>
+                </thead>
+                <tbody id="installmentTableBody">
+                <!-- Rows will be added here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <script src="calc.js"></script>
 </body>
