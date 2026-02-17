@@ -22,6 +22,13 @@ function generateQuestion() {
     startTime = Date.now();
 }
 
+function back() {
+    if (currentInput) {
+        currentInput = currentInput.substring(0, currentInput.length -1);
+        updateInputDisplay();
+    } 
+}
+
 function appendNumber(num) {
     currentInput += num;
     updateInputDisplay();
@@ -45,6 +52,7 @@ function checkAnswer() {
         stats.correct++;
         feedbackEl.style.color = "#2ecc71";
         feedbackEl.innerText = "Correct!";
+        setTimeout(generateQuestion, 2000);
     } else {
         stats.incorrect++;
         feedbackEl.style.color = "#e74c3c";
@@ -52,7 +60,7 @@ function checkAnswer() {
     }
 
     saveStats();
-    setTimeout(generateQuestion, 2000);
+    
 }
 
 function skipQuestion() {
