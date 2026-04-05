@@ -1,4 +1,4 @@
-import { startOfWeek, format, subWeeks } from 'date-fns';
+import { format, subWeeks } from 'date-fns';
 import type { AppData, WorkoutSession } from '../types';
 
 export interface WeeklyCardio {
@@ -10,12 +10,12 @@ export interface WeeklyCardio {
 export interface WeeklyVolume {
   week: string;
   exerciseName: string;
-  sets: number;
+  reps: number;
   avgReps: number;
 }
 
 function weekLabel(date: Date): string {
-  return format(startOfWeek(date, { weekStartsOn: 1 }), 'MMM d');
+  return format(date, 'yyyy-MM-dd');
 }
 
 function sessionsInRange(sessions: WorkoutSession[], weeks: number): WorkoutSession[] {
@@ -57,7 +57,7 @@ export function getVolumeByWeek(data: AppData, weeks: number): WeeklyVolume[] {
     return {
       week,
       exerciseName,
-      sets: acc.sets,
+      reps: acc.totalReps,
       avgReps: acc.sets > 0 ? Math.round(acc.totalReps / acc.sets) : 0,
     };
   }).sort((a, b) => a.week.localeCompare(b.week));

@@ -27,7 +27,7 @@ export function Stats() {
       </div>
 
       <section className="mb-6">
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Volume — Sets per Exercise</h2>
+        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Volume — Reps per Exercise</h2>
         <div className="bg-white rounded-xl shadow-sm p-4">
           <VolumeChart weeks={weeks} />
         </div>

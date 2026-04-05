@@ -11,7 +11,10 @@ export function loadData(): AppData {
     const parsed = JSON.parse(raw) as AppData;
     return {
       exercises: parsed.exercises ?? [],
-      sessions: parsed.sessions ?? [],
+      sessions: parsed.sessions.map(it => {
+        it.date = it.date.replace('00:00:00','07:00:00')
+        return it;
+      }) ?? [],
     };
   } catch {
     return EMPTY;
@@ -19,5 +22,6 @@ export function loadData(): AppData {
 }
 
 export function saveData(data: AppData): void {
+  data.sessions  = data.sessions.map(s => ({ ...s, date: s.date.replace('T00:00:00','T07:00:00') }));
   localStorage.setItem(KEY, JSON.stringify(data));
 }
