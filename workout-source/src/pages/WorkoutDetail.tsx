@@ -3,6 +3,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useAppData } from '../context/DataContext';
 import { Button } from '../components/ui/Button';
+import { generateId } from '../utils/uuid';
 
 export function WorkoutDetail() {
   const { id } = useParams<{ id: string }>();
@@ -22,6 +23,17 @@ export function WorkoutDetail() {
     navigate('/');
   }
 
+  function handleDuplicate() {
+    if (!session) return;
+    const newId = generateId();
+    const today = format(new Date(), 'yyyy-MM-dd');
+    dispatch({
+      type: 'DUPLICATE_SESSION',
+      payload: { ...session, id: newId, date: new Date(today).toISOString() },
+    });
+    navigate(`/workout/${newId}`);
+  }
+
   return (
     <div className="p-4 max-w-lg mx-auto">
       <div className="flex items-start justify-between mb-4">
@@ -33,6 +45,7 @@ export function WorkoutDetail() {
           <Link to={`/workout/${id}/edit`}>
             <Button variant="secondary" size="sm">Edit</Button>
           </Link>
+          <Button variant="secondary" size="sm" onClick={handleDuplicate}>Duplicate</Button>
           <Button variant="danger" size="sm" onClick={() => setConfirmDelete(true)}>Delete</Button>
         </div>
       </div>

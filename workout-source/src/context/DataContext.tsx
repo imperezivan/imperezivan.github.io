@@ -10,6 +10,7 @@ type Action =
   | { type: 'ADD_SESSION'; payload: Omit<WorkoutSession, 'id'> }
   | { type: 'UPDATE_SESSION'; payload: WorkoutSession }
   | { type: 'DELETE_SESSION'; payload: string }
+  | { type: 'DUPLICATE_SESSION'; payload: WorkoutSession }
   | { type: 'REPLACE_ALL'; payload: AppData };
 
 function reducer(state: AppData, action: Action): AppData {
@@ -26,6 +27,8 @@ function reducer(state: AppData, action: Action): AppData {
       return { ...state, sessions: state.sessions.map((s) => (s.id === action.payload.id ? action.payload : s)) };
     case 'DELETE_SESSION':
       return { ...state, sessions: state.sessions.filter((s) => s.id !== action.payload) };
+    case 'DUPLICATE_SESSION':
+      return { ...state, sessions: [...state.sessions, action.payload] };
     case 'REPLACE_ALL':
       return action.payload;
     default:
